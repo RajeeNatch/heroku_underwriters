@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loan Predictor</title>
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+</head>
+
+<body>
+    <div class="col-11 mx-auto">
+        <div class="text-center">
+            <h1 class="p-3 mb-2 text-white" id="navbar"><strong>The Underwriters</strong>
+                <br>Loan Approval/Rejection Predictor
+            </h1>
+
+        </div>
+    </div>
+    <br><br>
+    <div class="container-fluid" id="form-body">
+        
+        <h4><br>Welcome to our Loan Eligibility Predictor.</h4>
+        <h4>Complete the form below and get a prediction on whether or not your loan application would be approved
+            by a
+            financial institution. <br><br>
+        </h4>
+        <!-- Form starts here -->
+        <form action="{{ url_for('pred')}}" method="post">
+
+            <div class="row">
+                <div class="col-4">
+                    <label for="NAME_CONTRACT_TYPE"> Loan Type </label>
+                    <select id="NAME_CONTRACT_TYPE" name="NAME_CONTRACT_TYPE">
+                        <option disabled selected value> -- Select an option -- </option>
+                        <option value="Revolving loans">Revolving Loan</option>
+                        <option value="Cash loans">Cash Loan</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="AMT_CREDIT">Loan Amount Requested $</label>
+                    <input type="text" name="AMT_CREDIT" required="required" />
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-4">
+                    <label for="ORGANIZATION_TYPE_Business Entity Type 3"> Employment Type </label>
+                    <select id="ORGANIZATION_TYPE_Business Entity Type 3"
+                        name="ORGANIZATION_TYPE_Business Entity Type 3">
+                        <option disabled selected value> -- Select an option -- </option>
+                        <option value="Business Entity">Business Entity</option>
+                        <option value="Self-employed">Self-employed</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="AMT_INCOME_TOTAL">Annual Income $</label>
+                    <input type="text" name="AMT_INCOME_TOTAL" required="required" />
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-4">
+                    <label for="NAME_EDUCATION_TYPE_Secondary / secondary special">Education Level</label>
+                    <select id="NAME_EDUCATION_TYPE_Secondary / secondary special"
+                        name="NAME_EDUCATION_TYPE_Secondary / secondary special">
+                        <option disabled selected value> -- Select an option -- </option>
+                        <option value="Secondary / secondary special">Secondary / Secondary Special</option>
+                        <option value="Higher education">Higher Education</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="NAME_FAMILY_STATUS_Married">Marital Status</label>
+                    <select id="NAME_FAMILY_STATUS_Married" name="NAME_FAMILY_STATUS_Married">
+                        <option disabled selected value> -- Select an option -- </option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Widow">Widow</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="CNT_CHILDREN">How Many Children do you have?</label>
+                    <input type="text" name="CNT_CHILDREN" required="required" />
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-3">
+                    <label for="DAYS_BIRTH">Date of Birth</label>
+                    <input type="date" id="DAYS_BIRTH" name="DAYS_BIRTH" class="form-control" format="dd/mm/yyyy"
+                        placeholder="DD-MM-YYYY">
+                    <br>
+                </div>
+                <div class="col-3">
+                    <label for="DAYS_REGISTRATION">When did you last change your registration?</label>
+                    <input type="date" id="DAYS_REGISTRATION" name="DAYS_REGISTRATION" class="form-control"
+                        format="dd/mm/yyyy" placeholder="DD-MM-YYYY">
+                    <br>
+                </div>
+                <div class="col-3">
+                    <label for="DAYS_EMPLOYED">When did you start your current employment?</label>
+                    <input type="date" id="DAYS_EMPLOYED" name="DAYS_EMPLOYED" class="form-control" format="dd/mm/yyyy"
+                        placeholder="DD-MM-YYYY">
+                    <br>
+                </div>
+                <div class="col-3">
+                    <label for="DAYS_ID_PUBLISH">When did you last pull your identity document?</label>
+                    <input type="date" id="DAYS_ID_PUBLISH" name="DAYS_ID_PUBLISH" class="form-control"
+                        format="dd/mm/yyyy" placeholder="DD-MM-YYYY">
+                    <br>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <label for="REGION_POPULATION_RELATIVE">What is the Population in the Region your Live in?</label>
+                    <input type="text" name="REGION_POPULATION_RELATIVE" required="required" />
+                </div>
+
+                <div class="col-3">
+                    <label for="REGION_RATING_CLIENT">What is your Region's Rating?</label>
+                    <select id="REGION_RATING_CLIENT" name="REGION_RATING_CLIENT">
+                        <option disabled selected value> -- Select an option -- </option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <div class="col-5">
+                    <label for="REGION_RATING_CLIENT_W_CITY">What is your Region's Rating with Taking City into
+                        Account?</label>
+                    <select id="REGION_RATING_CLIENT_W_CITY" name="REGION_RATING_CLIENT_W_CITY">
+                        <option disabled selected value> -- Select an option -- </option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-4">
+                    <label for="REG_CITY_NOT_WORK_CITY">Is your Work Address and Home Address the Same?</label>
+                    <select id="REG_CITY_NOT_WORK_CITY" name="REG_CITY_NOT_WORK_CITY">
+                        <option disabled selected value> -- Select an option -- </option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="FLAG_PHONE">Please, Provide your Home Phone Number</label>
+                    <input type="text" name="FLAG_PHONE" />
+                </div>
+                <div class="col-4">
+                    <label for="FLAG_WORK_PHONE">Please, Provide your Work Phone Number</label>
+                    <input type="text" name="FLAG_WORK_PHONE" />
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-6">
+                    <label for="WEEKDAY_APPR_PROCESS_START_THURSDAY">On What of the Week are you Planning to Submit your
+                        Application on?</label>
+                    <select id="WEEKDAY_APPR_PROCESS_START_THURSDAY" name="WEEKDAY_APPR_PROCESS_START_THURSDAY">
+                        <option disabled selected value> -- Select an option -- </option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                    </select>
+                </div>
+                <div class="col-6">
+                    <label for="HOUR_APPR_PROCESS_START">At What Time are you Planning to Submit your
+                        Application</label>
+                    <input type="time" name="HOUR_APPR_PROCESS_START" placeholder="Due date (clock)..." step="1" />
+                </div>
+                <br><br>
+            </div>
+
+            <br><br><br>
+            <div class="d-grid gap-2 col-4 mx-auto">
+                <input id="submit-button" class='btn btn-primary btn-lgy' type="submit" , value="Submit">
+            </div>
+        </form>
+
+        <br><br>
+
+        <h3>{{ prediction }}</h3>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

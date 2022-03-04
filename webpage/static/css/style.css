@@ -1,0 +1,42 @@
+#submit-button{
+    background-color:rgb(241, 143, 159);
+    border-color: black;
+    color: white;
+    font-size: 20px;
+}
+
+#form-body{
+    border-radius: 30px;
+    position: relative
+}
+
+#form-body:before{
+    background-image: url(https://th.bing.com/th/id/R.8d9ffc1675ab4c26e03a5b009d1b9c0b?rik=ylsFUKXIdD%2bBdg&pid=ImgRaw&r=0);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    opacity: .65;
+    border-radius: 30px;
+}
+
+body{
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h3{
+    text-align: center;
+}
+
+#navbar {
+    border-radius: 30px;
+    background-color: rgb(15, 168, 189);    
+    }
