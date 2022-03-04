@@ -1,1 +1,2 @@
-web: gunicorn projectunderwriters.app.app:app
+web: gunicorn app.py app:app
+
