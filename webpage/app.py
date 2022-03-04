@@ -17,10 +17,10 @@ def home():
     return render_template("index.html")
 
 # Load the ML Model
-clf = pd.read_pickle('./Credit_Risk_Evaluator_Model.zip', compression='zip')
+clf = pd.read_pickle('../Credit_Risk_Evaluator_Model.zip', compression='zip')
 
 # Load the ML Scaler
-filename2 = './scaler.sav'
+filename2 = '../scaler.sav'
 scaler = pickle.load(open(filename2, 'rb'))
 
 # Create a route to run the Machine Learning model and make the prediction
